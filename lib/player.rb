@@ -1,9 +1,15 @@
+require_relative 'ui'
+
 class Player
 
-  def ask_move
+  attr_reader :ui
 
+  def initialize
+    @ui = ui
   end
 
-
+  def ask_move
+    @ui.choice
+  end
 
 end

@@ -6,11 +6,32 @@ class Ui
   end
 
   def welcome_player
-    @stdout.puts "Welcome to Rock-Paper-Scissors!"
+    @stdout.puts "WELCOME TO ROCK-PAPER-SCISSORS!"
   end
 
   def choice
-    @stdout.puts "Make your first choice: rock, paper or scissors?"
+    @stdout.puts "Make your first move: rock, paper or scissors?"
+    @stdin.gets
+  end
+
+  def computer
+    @stdout.puts "Computer played:"
+  end
+
+  def winner
+    @stdout.puts "YOU WON! Congratulations!"
+  end
+
+  def loser
+    @stdout.puts "YOU LOST! What a shame."
+  end
+
+  def draw
+    @stdout.puts "DRAW! Nobody wins."
+  end
+
+  def play_again
+    @stdout.puts "Do you want to play again?"
     @stdin.gets
   end
 
