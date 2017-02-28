@@ -1,13 +1,13 @@
-class Rock
+class Scissors
 
   def name
-    @name = "rock"
+    @name = "scissors"
   end
 
   def play_against(move)
-    if move.name == "scissors"
+    if move.name == "paper"
       "won"
-    elsif move.name == "paper"
+    elsif move.name == "rock"
       "lost"
     else
       "draw"

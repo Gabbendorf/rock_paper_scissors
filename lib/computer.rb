@@ -1,12 +1,16 @@
+require_relative 'rock'
+require_relative 'paper'
+require_relative 'scissors'
+
 class Computer
 
   attr_reader :moves
 
   def initialize
-    @moves = ["rock", "paper", "scissors"]
+    @moves = [Rock.new, Paper.new, Scissors.new]
   end
 
-  def next_move
+  def move
     @moves.sample
   end
 

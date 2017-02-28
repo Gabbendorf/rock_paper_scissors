@@ -6,33 +6,47 @@ class Ui
   end
 
   def welcome_player
-    @stdout.puts "WELCOME TO ROCK-PAPER-SCISSORS!"
+    @stdout.puts %q!
+    (                   (                         (
+  )\ )            )   )\ )                      )\ )
+ (()/(         ( /(  (()/(   )         (  (    (()/(    (            (
+  /(_))(    (  )\())  /(_)| /( `  )   ))\ )(    /(_)) ( )\ (  (   (  )(  (
+ (_))  )\   )\((_)\  (_)) )(_))/(/(  /((_|()\  (_))   )((_))\ )\  )\(()\ )\
+ | _ \((_) ((_) |(_) | _ ((_)_((_)_\(_))  ((_) / __| ((_|_|(_|(_)((_)((_|(_)
+ |   / _ \/ _|| / /  |  _/ _` | '_ \) -_)| '_| \__ \/ _|| (_-<_-< _ \ '_(_-<
+ |_|_\___/\__||_\_\  |_| \__,_| .__/\___||_|   |___/\__||_/__/__|___/_| /__/
+                              |_|                                            
+   !
   end
 
   def choice
-    @stdout.puts "Make your first move: rock, paper or scissors?"
-    @stdin.gets
+    @stdout.puts "Make your move: rock, paper or scissors?"
+    @stdin.gets.chomp
   end
 
-  def computer
-    @stdout.puts "Computer played:"
+  def computer(move)
+    @stdout.puts "Computer played: #{move.class.name.downcase}"
   end
 
-  def winner
+  def player_wins
     @stdout.puts "YOU WON! Congratulations!"
   end
 
-  def loser
+  def player_loses
     @stdout.puts "YOU LOST! What a shame."
   end
 
-  def draw
+  def nobody_wins
     @stdout.puts "DRAW! Nobody wins."
   end
 
   def play_again
     @stdout.puts "Do you want to play again?"
-    @stdin.gets
+    @stdin.gets.chomp
+  end
+
+  def say_goodbye
+    @stdout.puts "I hope to see you soon again!"
   end
 
 end

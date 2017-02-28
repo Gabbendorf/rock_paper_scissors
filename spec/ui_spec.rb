@@ -1,10 +1,12 @@
 require_relative '../lib/ui'
+require_relative '../lib/computer'
 
 RSpec.describe Ui do
 
   let(:output) {StringIO.new}
   let(:input) {StringIO.new}
   let(:ui) {Ui.new(input, output)}
+  let(:computer) {Computer.new}
 
   # let(:pipe_out) {MyOutputPipe.new}
   # let(:ui) {Ui.new(input, output)}
@@ -25,32 +27,39 @@ RSpec.describe Ui do
 
   it "reveals the move of the computer" do
     ui = Ui.new(input, output)
-    ui.computer
+    ui.computer(computer)
     expect(output.string).to include("Computer played:")
   end
 
   it "says that player won" do
     ui = Ui.new(input, output)
-    ui.winner
+    ui.player_wins
     expect(output.string).to include("YOU WON! Congratulations!")
   end
 
   it "says that player lost" do
     ui = Ui.new(input, output)
-    ui.loser
+    ui.player_loses
     expect(output.string).to include("YOU LOST! What a shame.")
   end
 
   it "says 2 players draw" do
     ui = Ui.new(input, output)
-    ui.draw
+    ui.nobody_wins
     expect(output.string).to include("DRAW! Nobody wins.")
   end
 
   it "ask the player to play again" do
+    input = StringIO.new("\n")
     ui = Ui.new(input, output)
     ui.play_again
     expect(output.string).to include("Do you want to play again?")
+  end
+
+  it "says goodbye" do
+    ui = Ui.new(input, output)
+    ui.say_goodbye
+    expect(output.string).to include("I hope to see you soon!")
   end
 
 #  --> Pairing with Andrea:
