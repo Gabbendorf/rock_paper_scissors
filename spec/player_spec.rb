@@ -31,4 +31,8 @@ RSpec.describe Player do
     expect(move.class.name).to eq("Paper")
   end
 
+  it "returns an empty list of won games" do
+    expect(player.won_games.length).to eq(0)
+  end
+
 end

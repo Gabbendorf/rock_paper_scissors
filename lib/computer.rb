@@ -14,4 +14,8 @@ class Computer
     @moves.sample
   end
 
+  def won_games
+    []
+  end
+
 end

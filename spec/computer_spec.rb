@@ -14,4 +14,8 @@ RSpec.describe Computer do
     expect(possible_moves.include?(move.name)).to eq(true)
   end
 
+  it "returns an empty list of won games" do
+    expect(computer.won_games.length).to eq(0)
+  end
+
 end

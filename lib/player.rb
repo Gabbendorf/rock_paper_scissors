@@ -22,4 +22,8 @@ class Player
     end
   end
 
+  def won_games
+    []
+  end
+
 end

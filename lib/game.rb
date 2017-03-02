@@ -12,28 +12,38 @@ class Game
     @player = Player.new(ui)
   end
 
-  def starts
+  def greetings
     @ui.super_logo
     @ui.welcome_player
-    continue = true
-    while continue
-      player_move = @player.player_move
-      computer_move = @computer.move
-      @ui.computer(computer_move)
-      result = player_move.play_against(computer_move)
-      if result == "won"
-        @ui.player_wins
-      elsif result == "lost"
-        @ui.player_loses
-      elsif result == "draw"
-        @ui.nobody_wins
-      end
-      reply = @ui.play_again
-      if reply != "yes"
-        @ui.say_goodbye
-        continue = false
-      end
+  end
+
+  def rules
+    player_move = @player.player_move
+    computer_move = @computer.move
+    @ui.computer(computer_move)
+    result = player_move.play_against(computer_move)
+    if result == "won"
+      @ui.player_wins
+    elsif result == "lost"
+      @ui.player_loses
+    elsif result == "draw"
+      @ui.nobody_wins
     end
+  end
+
+  def play_again?
+    reply = @ui.play_again
+      while reply == "yes"
+        rules
+        reply = @ui.play_again
+      end
+    @ui.say_goodbye
+  end
+
+  def start
+    greetings
+    rules
+    play_again?
   end
 
 end

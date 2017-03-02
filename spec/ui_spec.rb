@@ -48,7 +48,7 @@ RSpec.describe Ui do
     expect(output.string).to include("DRAW! Nobody wins.")
   end
 
-  it "ask the player to play again" do
+  it "asks the player to play again" do
     input = StringIO.new("\n")
     ui = Ui.new(input, output)
     ui.play_again

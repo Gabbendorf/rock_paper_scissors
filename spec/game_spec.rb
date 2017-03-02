@@ -5,9 +5,25 @@ RSpec.describe Game do
   let(:game) {Game.new}
   # let(:player) {Player.new(ui)}
   # let(:computer) {Computer.new}
-  # let(:ui) {Ui.new(input, output)}
-  # let(:input) {StringIO.new}
-  # let(:output) {StringIO.new}
+  let(:input) {StringIO.new}
+  let(:output) {StringIO.new}
+
+  xit "prints out a logo" do
+    ui = Ui.new(input, output)
+    logo = ui.super_logo
+    expect(game.greetings).to eq(logo)
+  end
+
+  it "prints out a welcoming message" do
+    ui = Ui.new(input, output)
+    output = ui.welcome_player
+    expect(game.greetings).to eq(output)
+  end
+
+  xit "it is true if player's reply is yes" do
+    reply = "yes"
+    expect(game.play_again?).to eq()
+  end
 
   it "gives result 'won' if player's move wins" do
     player_move = Paper.new

@@ -21,8 +21,8 @@ class Ui
 
   def welcome_player
     @stdout.puts "Welcome to Rock-Paper-Scissors!"
-    puts "Are you ready to play??"
-    puts ""
+    @stdout.puts "Are you ready to play??"
+    @stdout.puts ""
   end
 
   def choice
