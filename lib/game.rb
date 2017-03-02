@@ -22,11 +22,11 @@ class Game
       @ui.computer(computer_move)
       result = player_move.play_against(computer_move)
       if result == "won"
-        ui.player_wins
+        @ui.player_wins
       elsif result == "lost"
-        ui.player_loses
+        @ui.player_loses
       elsif result == "draw"
-        ui.nobody_wins
+        @ui.nobody_wins
       end
       reply = @ui.play_again
       if reply != "yes"
