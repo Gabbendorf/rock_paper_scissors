@@ -5,7 +5,6 @@ RSpec.describe Ui do
 
   let(:output) {StringIO.new}
   let(:input) {StringIO.new}
-  let(:ui) {Ui.new(input, output)}
   let(:computer) {Computer.new}
 
   # let(:pipe_out) {MyOutputPipe.new}
@@ -14,7 +13,7 @@ RSpec.describe Ui do
   it "says hi" do
     ui = Ui.new(input, output)
     ui.welcome_player
-    expect(output.string).to include("WELCOME TO ROCK-PAPER-SCISSORS!")
+    expect(output.string).to include("Welcome to Rock-Paper-Scissors!")
   end
 
   it "gives the user all possible game options" do
@@ -59,7 +58,7 @@ RSpec.describe Ui do
   it "says goodbye" do
     ui = Ui.new(input, output)
     ui.say_goodbye
-    expect(output.string).to include("I hope to see you soon!")
+    expect(output.string).to include("I hope to see you soon again!")
   end
 
 #  --> Pairing with Andrea:

@@ -5,8 +5,8 @@ class Ui
     @stdout = stdout
   end
 
-  def welcome_player
-    @stdout.puts %q!
+  def super_logo
+    puts %q!
     (                   (                         (
   )\ )            )   )\ )                      )\ )
  (()/(         ( /(  (()/(   )         (  (    (()/(    (            (
@@ -15,8 +15,14 @@ class Ui
  | _ \((_) ((_) |(_) | _ ((_)_((_)_\(_))  ((_) / __| ((_|_|(_|(_)((_)((_|(_)
  |   / _ \/ _|| / /  |  _/ _` | '_ \) -_)| '_| \__ \/ _|| (_-<_-< _ \ '_(_-<
  |_|_\___/\__||_\_\  |_| \__,_| .__/\___||_|   |___/\__||_/__/__|___/_| /__/
-                              |_|                                            
+                              |_|
    !
+  end
+
+  def welcome_player
+    @stdout.puts "Welcome to Rock-Paper-Scissors!"
+    puts "Are you ready to play??"
+    puts ""
   end
 
   def choice

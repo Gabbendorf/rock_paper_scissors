@@ -20,7 +20,7 @@ RSpec.describe Player do
     ui = Ui.new(input, output)
     player = Player.new(ui)
     move = player.player_move
-    expect(move.name).to eq("scissors")
+    expect(move.class.name).to eq("Scissors")
   end
 
   it "returns paper if the player has input paper" do
@@ -28,7 +28,7 @@ RSpec.describe Player do
     ui = Ui.new(input, output)
     player = Player.new(ui)
     move = player.player_move
-    expect(move.name).to eq("paper")
+    expect(move.class.name).to eq("Paper")
   end
 
 end

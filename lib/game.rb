@@ -13,6 +13,7 @@ class Game
   end
 
   def starts
+    @ui.super_logo
     @ui.welcome_player
     continue = true
     while continue
