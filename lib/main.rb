@@ -1,4 +1,6 @@
 require_relative 'game'
+require_relative 'ui'
 
-game = Game.new
+ui = Ui.new($stdin, $stdout)
+game = Game.new(ui)
 game.start

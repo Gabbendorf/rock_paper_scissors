@@ -6,8 +6,8 @@ class Game
 
   attr_reader :ui, :computer, :player
 
-  def initialize
-    @ui = Ui.new($stdin, $stdout)
+  def initialize(ui)
+    @ui = ui
     @computer = Computer.new
     @player = Player.new(ui)
   end
@@ -17,16 +17,19 @@ class Game
     @ui.welcome_player
   end
 
-  def rules
+  def result
     player_move = @player.player_move
     computer_move = @computer.move
     @ui.computer(computer_move)
-    result = player_move.play_against(computer_move)
-    if result == "won"
+    player_move.play_against(computer_move)
+  end
+
+  def print_result(verdict)
+    if verdict == "won"
       @ui.player_wins
-    elsif result == "lost"
+    elsif verdict == "lost"
       @ui.player_loses
-    elsif result == "draw"
+    elsif verdict == "draw"
       @ui.nobody_wins
     end
   end
@@ -34,7 +37,7 @@ class Game
   def play_again?
     reply = @ui.play_again
       while reply == "yes"
-        rules
+        print_result(result)
         reply = @ui.play_again
       end
     @ui.say_goodbye
@@ -42,7 +45,7 @@ class Game
 
   def start
     greetings
-    rules
+    print_result(result)
     play_again?
   end
 

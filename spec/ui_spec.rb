@@ -7,8 +7,14 @@ RSpec.describe Ui do
   let(:input) {StringIO.new}
   let(:computer) {Computer.new}
 
-  # let(:pipe_out) {MyOutputPipe.new}
-  # let(:ui) {Ui.new(input, output)}
+  # For testing constant LOGO, I've created a mock output with method 'double'
+  # and expected this to receive a method 'puts' with an argument that is the constant of the Ui
+  it "prints a logo" do
+    output = double("output")
+    ui = Ui.new(input, output)
+    expect(output).to receive(:puts).with(Ui::LOGO)
+    ui.super_logo
+  end
 
   it "says hi" do
     ui = Ui.new(input, output)
@@ -58,10 +64,14 @@ RSpec.describe Ui do
   it "says goodbye" do
     ui = Ui.new(input, output)
     ui.say_goodbye
-    expect(output.string).to include("I hope to see you soon again!")
+    expect(output.string).to include("I hope to see you again soon!")
   end
 
 #  --> Pairing with Andrea:
+
+  # let(:pipe_out) {MyOutputPipe.new}
+  # let(:ui) {Ui.new(input, output)}
+
 #   it "says hi" do
 #     ui = Ui.new("double_pipe_in", pipe_out)
 #     ui.welcome_user
@@ -70,7 +80,7 @@ RSpec.describe Ui do
 #
 # end
 # #
-# #
+# # --> creating a customised 'StringIO' class
 # class MyOutputPipe
 #   def initialize
 #     @contents = ""

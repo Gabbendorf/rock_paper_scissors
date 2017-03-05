@@ -2,22 +2,24 @@ require_relative '../lib/game'
 
 RSpec.describe Game do
 
-  let(:game) {Game.new}
+  # let(:game) {Game.new}
   # let(:player) {Player.new(ui)}
   # let(:computer) {Computer.new}
   let(:input) {StringIO.new}
   let(:output) {StringIO.new}
 
-  xit "prints out a logo" do
-    ui = Ui.new(input, output)
-    logo = ui.super_logo
-    expect(game.greetings).to eq(logo)
-  end
-
-  it "prints out a welcoming message" do
-    ui = Ui.new(input, output)
-    output = ui.welcome_player
-    expect(game.greetings).to eq(output)
+  # Testing interaction between Game and Ui:
+  # need to create a mock Ui with method 'double' to test that Ui
+  # 'super_logo' and 'welcome_player' methods are correctly run by Game
+  # through method 'greetings'
+  it "prints out a logo" do
+    ui = double("ui")
+    game = Game.new(ui)
+    expect(ui).to receive(:super_logo)
+    expect(ui).to receive(:welcome_player)
+    game.greetings
+    # require 'pry'
+    # binding.pry
   end
 
   xit "it is true if player's reply is yes" do
