@@ -6,10 +6,10 @@ class Game
 
   attr_reader :ui, :computer, :player
 
-  def initialize(ui)
+  def initialize(ui, computer, player)
     @ui = ui
-    @computer = Computer.new
-    @player = Player.new(ui)
+    @computer = computer
+    @player = player
   end
 
   def greetings
