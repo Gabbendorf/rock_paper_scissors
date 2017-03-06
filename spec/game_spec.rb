@@ -13,7 +13,7 @@ RSpec.describe Game do
   # need to create a mock Ui with method 'double' to test that Ui
   # 'super_logo' and 'welcome_player' methods are correctly run by Game
   # through method 'greetings'
-  it "prints out a logo" do
+  it "prints out a logo and welcome message" do
     ui = double("ui")
     game = Game.new(ui, computer, player)
     expect(ui).to receive(:super_logo)
@@ -23,10 +23,12 @@ RSpec.describe Game do
     # binding.pry
   end
 
+  # Created mock Player and Computer to run their methods and get their (hardcoded) moves.
+  # Then run 'result' method of real Game to test it works.
+  # Ui's method 'computer' prints out an output when testing, though.
   it "returns result of game between player vs computer" do
     player = double("player")
     computer = double("computer")
-    #ui = instance_double("Ui")
     game = Game.new(ui, computer, player)
     expect(player).to receive(:player_move) {
       Rock.new
@@ -35,6 +37,30 @@ RSpec.describe Game do
       Scissors.new
     }
     expect(game.result).to eq("won")
+  end
+
+  it "prints out that player won" do
+    ui = double("ui")
+    game = Game.new(ui, computer, player)
+    expect(ui).to receive(:player_wins)
+    verdict = "won"
+    game.print_result(verdict)
+  end
+
+  it "prints out that player lost" do
+    ui = double("ui")
+    game = Game.new(ui, computer, player)
+    expect(ui).to receive(:player_loses)
+    verdict = "lost"
+    game.print_result(verdict)
+  end
+
+  it "prints out that the game is draw" do
+    ui = double("ui")
+    game = Game.new(ui, computer, player)
+    expect(ui).to receive(:nobody_wins)
+    verdict = "draw"
+    game.print_result(verdict)
   end
 
 end

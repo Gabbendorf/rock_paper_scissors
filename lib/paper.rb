@@ -14,8 +14,8 @@ class Paper
     end
   end
 
-  def add_to_list
-    1
-  end
+  # def add_to_list
+  #   1
+  # end
 
 end
