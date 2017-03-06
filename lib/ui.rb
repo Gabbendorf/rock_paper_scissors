@@ -53,6 +53,11 @@ class Ui
     @stdin.gets.chomp
   end
 
+  def the_winner_is(player, computer)
+    @stdout.puts "Player won #{player.won_games} times."
+    @stdout.puts "Computer won #{computer.won_games} times."
+  end
+
   def say_goodbye
     @stdout.puts "I hope to see you again soon!"
   end

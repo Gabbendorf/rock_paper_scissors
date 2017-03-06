@@ -1,11 +1,14 @@
 require_relative '../lib/ui'
 require_relative '../lib/computer'
+require_relative '../lib/player'
 
 RSpec.describe Ui do
 
   let(:output) {StringIO.new}
   let(:input) {StringIO.new}
+  let(:ui) {Ui.new(input, output)}
   let(:computer) {Computer.new}
+  let(:player) {Player.new(ui)}
 
   # For testing constant LOGO, I've created a mock output with method 'double'
   # and expected this to receive a method 'puts' with an argument that is the constant of the Ui
@@ -20,6 +23,8 @@ RSpec.describe Ui do
     ui = Ui.new(input, output)
     ui.welcome_player
     expect(output.string).to include("Welcome to Rock-Paper-Scissors!")
+    expect(output.string).to include("Are you ready to play??")
+    expect(output.string).to include("")
   end
 
   it "gives the user all possible game options" do
@@ -59,6 +64,13 @@ RSpec.describe Ui do
     ui = Ui.new(input, output)
     ui.play_again
     expect(output.string).to include("Do you want to play again?")
+  end
+
+  it "prints out numbers of both computer's and player's won games" do
+      ui = Ui.new(input, output)
+      ui.the_winner_is(player, computer)
+      expect(output.string).to include("Player won #{player.won_games} times.")
+      expect(output.string).to include("Computer won #{computer.won_games} times.")
   end
 
   it "says goodbye" do
