@@ -63,4 +63,19 @@ RSpec.describe Game do
     game.print_result(verdict)
   end
 
+  xit "shows new game result until player wants to play" do
+    ui = double("ui")
+    game = Game.new(ui, computer, player)
+    expect(ui).to receive(:play_again) {"yes"}
+    game.play_again?
+  end
+
+  it "says goodbye if player does no longer want to play" do
+    ui = double("ui")
+    game = Game.new(ui, computer, player)
+    expect(ui).to receive(:play_again) {"no"}
+    expect(ui).to receive(:say_goodbye)
+    game.play_again?
+  end
+
 end
