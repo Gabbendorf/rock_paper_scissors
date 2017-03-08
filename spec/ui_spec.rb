@@ -68,9 +68,11 @@ RSpec.describe Ui do
 
   it "prints out numbers of both computer's and player's won games" do
       ui = Ui.new(input, output)
-      ui.the_winner_is(player, computer)
-      expect(output.string).to include("Player won #{player.won_games} times.")
-      expect(output.string).to include("Computer won #{computer.won_games} times.")
+      ui.print_scores(player, computer)
+      expect(output.string).to include("Player won #{player.points} times.")
+      # expect(output.string).to include("Player won #{(player.points).to_s} time.")
+      expect(output.string).to include("Computer won #{computer.points} times.")
+      # expect(output.string).to include("Computer won #{computer.points} time.")
   end
 
   it "says goodbye" do

@@ -5,10 +5,11 @@ require_relative 'paper'
 
 class Player
 
-  attr_reader :ui
+  attr_reader :ui, :points
 
   def initialize(ui)
     @ui = ui
+    @points = 0
   end
 
   def player_move
@@ -22,8 +23,8 @@ class Player
     end
   end
 
-  def won_games
-    []
+  def add_point
+    @points += 1
   end
 
 end

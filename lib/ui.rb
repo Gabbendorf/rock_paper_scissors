@@ -53,9 +53,23 @@ class Ui
     @stdin.gets.chomp
   end
 
-  def the_winner_is(player, computer)
-    @stdout.puts "Player won #{player.won_games} times."
-    @stdout.puts "Computer won #{computer.won_games} times."
+  def print_scores(player, computer)
+    if player.points != 1
+      @stdout.puts "Player won #{(player.points).to_s} times."
+    else
+      @stdout.puts "Player won #{(player.points).to_s} time."
+    end
+    if computer.points != 1
+      @stdout.puts "Computer won #{(computer.points).to_s} times."
+    else
+      @stdout.puts "Computer won #{(computer.points).to_s} time."
+    end
+  end
+
+  def player_is_the_winner
+  end
+
+  def computer_is_the_winner
   end
 
   def say_goodbye

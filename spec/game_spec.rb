@@ -63,10 +63,17 @@ RSpec.describe Game do
     game.print_result(verdict)
   end
 
-  xit "shows new game result until player wants to play" do
+  it "adds point to player if s/he wins or to computer if s/he loses" do
+  end
+
+  it "shows new game result until player wants to play" do
     ui = double("ui")
     game = Game.new(ui, computer, player)
-    expect(ui).to receive(:play_again) {"yes"}
+    expect(ui).to receive(:play_again).and_return('yes', 'no')
+    expect(game).to receive(:result) { "won" }
+    expect(game).to receive(:print_result).with("won")
+    expect(ui).to receive(:print_scores)
+    expect(ui).to receive(:say_goodbye)
     game.play_again?
   end
 
@@ -74,6 +81,7 @@ RSpec.describe Game do
     ui = double("ui")
     game = Game.new(ui, computer, player)
     expect(ui).to receive(:play_again) {"no"}
+    expect(ui).to receive(:print_scores)
     expect(ui).to receive(:say_goodbye)
     game.play_again?
   end

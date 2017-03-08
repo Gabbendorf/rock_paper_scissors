@@ -26,8 +26,4 @@ RSpec.describe Paper do
     expect(paper_one.play_against(paper_two)).to eq("draw")
   end
 
-  it "returns 1 if it wins" do
-  expect(paper.add_to_list).to eq(1)  
-  end
-
 end

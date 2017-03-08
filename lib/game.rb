@@ -36,18 +36,21 @@ class Game
 
   def add_point_to_winner(verdict)
     if verdict == "won"
-      @player.won_games.push[1]
+      @player.add_point
     elsif verdict == "lost"
-      @player.won_games.push[1]
+      @computer.add_point
     end
   end
 
   def play_again?
     reply = @ui.play_again
       while reply == "yes"
-        print_result(result)
+        outcome = result
+        print_result(outcome)
+        add_point_to_winner(outcome)
         reply = @ui.play_again
       end
+    @ui.print_scores(@player, @computer)
     @ui.say_goodbye
   end
 

@@ -14,8 +14,19 @@ RSpec.describe Computer do
     expect(possible_moves.include?(move.name)).to eq(true)
   end
 
-  it "returns an empty list of won games" do
-    expect(computer.won_games.length).to eq(0)
+  it "returns zero points" do
+    expect(computer.points).to eq(0)
+  end
+
+  it "adds 1 point" do
+    computer.add_point
+    expect(computer.points).to eq(1)
+  end
+
+  it "adds 2 points" do
+    computer.add_point
+    computer.add_point
+    expect(computer.points).to eq(2)
   end
 
 end
